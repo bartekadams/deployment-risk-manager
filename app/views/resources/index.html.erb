@@ -1,0 +1,15 @@
+<ul>
+  <% @resources.each do |resource| %>
+    <li>
+      <%= resource.name %>
+      |
+      <% if resource.available? %>
+        Available
+      <% else %>
+        Not available
+      <% end %>
+      |
+      <%= link_to("switch", resource_path(resource), method: :put) %>
+    </li>
+  <% end %>
+</ul>
