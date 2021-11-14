@@ -1,15 +1,36 @@
-<ul>
-  <% @resources.each do |resource| %>
-    <li>
-      <%= resource.name %>
-      |
-      <% if resource.available? %>
-        Available
-      <% else %>
-        Not available
-      <% end %>
-      |
-      <%= link_to("switch", resource_path(resource), method: :put) %>
-    </li>
-  <% end %>
-</ul>
+<div class="columns is-centered">
+  <div class="column is-half">
+    <table class="table is-striped is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>state</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @resources.each do |resource| %>
+          <tr>
+            <td>
+              <%= resource.id %>
+            </td>
+            <td>
+              <%= resource.name %>
+            </td>
+            <td>
+              <% if resource.available? %>
+                <span class="tag is-success">available</span>
+              <% else %>
+                <span class="tag is-danger">unavailable</span>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to("toggle", resource_path(resource), method: :put) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

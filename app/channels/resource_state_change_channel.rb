@@ -5,6 +5,15 @@ class ResourceStateChangeChannel < ApplicationCable::Channel
     stream_from("chat_Best Room")
   end
 
+  def unsubscribed
+
+  end
+  # transmit method also available
+  # transmit(data, via: nil)
+  # Transmit a hash of data to the subscriber.
+  # The hash will automatically be wrapped in a JSON envelope
+  # with the proper channel identifier marked as the recipient.
+
   def one
 
   end
