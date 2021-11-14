@@ -2,7 +2,7 @@ class ResourceStateChangeChannel < ApplicationCable::Channel
   # Called when the consumer has successfully
   # become a subscriber to this channel.
   def subscribed
-    stream_from("chat_Best Room")
+    stream_from("resource_new_state")
   end
 
   def unsubscribed

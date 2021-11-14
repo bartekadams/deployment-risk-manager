@@ -18,7 +18,7 @@
             <td>
               <%= resource.name %>
             </td>
-            <td>
+            <td id="resource_state_<%= resource.id %>">
               <% if resource.available? %>
                 <span class="tag is-success">available</span>
               <% else %>
@@ -26,7 +26,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to("toggle", resource_path(resource), method: :put) %>
+              <%= link_to("toggle", resource_path(resource), method: :put, remote: true) %>
             </td>
           </tr>
         <% end %>
