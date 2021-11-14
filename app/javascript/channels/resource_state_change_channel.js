@@ -1,6 +1,6 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create({ channel: "ResourceStateChangeChannel" }, {
+const subscription = consumer.subscriptions.create({ channel: "ResourceStateChangeChannel" }, {
   received(data) {
     let tag = document.querySelectorAll(`#resource_state_${data.id} .tag`)[0]
     if(data.available) {
@@ -18,6 +18,12 @@ consumer.subscriptions.create({ channel: "ResourceStateChangeChannel" }, {
   },
   connected() {
     console.log("connected")
+    let arr = Array.from(document.getElementsByClassName("resource_toggle"))
+    arr.forEach((element) => {
+      element.addEventListener('click', () => {
+        subscription.perform("toggle", { id: element.dataset.id })
+      })
+    })
   },
   disconnected() {
     console.log("disconnected")

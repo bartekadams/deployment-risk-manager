@@ -14,11 +14,8 @@ class ResourceStateChangeChannel < ApplicationCable::Channel
   # The hash will automatically be wrapped in a JSON envelope
   # with the proper channel identifier marked as the recipient.
 
-  def one
-
-  end
-
-  def two
-
+  def toggle(data)
+    resource = Resource.find(data["id"])
+    resource.toggle_availability
   end
 end
